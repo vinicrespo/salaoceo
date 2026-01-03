@@ -10,9 +10,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
       <div className="relative z-10 flex flex-col items-center gap-6 max-w-4xl mx-auto text-center">
 
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 text-sm font-medium text-[#C9A227]">
-          For salon owners working 60+ hours and still stressed about money
-        </div>
+
 
         {/* Headline */}
         <h1 className="text-[#2D2D2D] text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.15] tracking-tight max-w-3xl">
