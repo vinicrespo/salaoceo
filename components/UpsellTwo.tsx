@@ -1,137 +1,168 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IMAGES } from '../constants';
+import { Calendar, Check, X, ShieldCheck, Lock } from 'lucide-react';
 
 const UpsellTwo: React.FC = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleYes = () => {
+    console.log('Upsell 2 Accepted: Roteiro 90 Dias (R$ 47)');
+    // Proceed to Thank You page or next step
     navigate('/thank-you');
   };
 
   const handleNo = () => {
-    navigate('/downsell-2');
+    console.log('Upsell 2 Declined');
+    // Proceed to Downsell 2 (if exists) or Thank You
+    navigate('/downsell2');
   };
 
   return (
-    <div className="bg-[#f8f7f6] dark:bg-[#221810] font-display text-[#2D2D2D] dark:text-gray-100 antialiased selection:bg-[#ec6d13]/20 min-h-screen">
-      <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-white dark:bg-[#221810]">
-        
-        {/* Progress */}
-        <div className="w-full bg-white dark:bg-[#2a1e16] px-6 py-4 border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#B8860B] dark:text-[#ec6d13]">Step 3 of 3</span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2D2D2D] dark:text-white">Final Step</span>
-          </div>
-          <div className="flex w-full flex-row items-center justify-center gap-1.5">
-            <div className="h-1.5 flex-1 rounded-full bg-[#ec6d13]"></div>
-            <div className="h-1.5 flex-1 rounded-full bg-[#ec6d13]"></div>
-            <div className="h-1.5 flex-1 rounded-full bg-[#ec6d13]"></div>
-          </div>
-        </div>
+    <div className="font-sans antialiased bg-white min-h-screen flex flex-col">
 
-        {/* Warning Header */}
-        <div className="bg-[#C9A227]/10 border-b border-[#C9A227]/20 p-4 text-center">
-          <div className="flex items-center justify-center gap-2 text-[#C9A227] dark:text-yellow-500">
-            <span className="material-symbols-outlined text-[20px]">warning</span>
-            <p className="text-sm font-bold uppercase tracking-wide">One More Thing Before You Go...</p>
-          </div>
-        </div>
+      {/* SECTION 1: THE REALITY CHECK (Hero - Dark Background) */}
+      <section className="bg-[#1A1A1A] text-white pt-8 pb-10 px-4 text-center border-b border-[#333]">
+        <div className="max-w-md mx-auto space-y-4">
 
-        {/* Headline */}
-        <div className="px-6 pt-8 pb-4 text-center">
-          <h1 className="text-[#2D2D2D] dark:text-white text-3xl font-extrabold leading-tight tracking-tight mb-3">
-            Want Every Template, Script & Checklist <span className="text-[#ec6d13] underline decoration-[#F5E6E0] decoration-4 underline-offset-2">Done For You?</span>
+          <p className="text-[#FFD700] font-bold text-xs uppercase tracking-widest mb-2">
+            PASSO FINAL: Garanta que você não vai desistir.
+          </p>
+
+          <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">
+            E agora? Você sabe exatamente o que fazer quando acordar amanhã?
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg font-normal leading-relaxed">
-            Stop wasting hours typing policies. I've done the hard work so you don't have to.
-          </p>
-        </div>
 
-        {/* Hero Image */}
-        <div className="px-4 pb-6">
-          <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800">
-            <div 
-              className="w-full h-full bg-center bg-cover"
-              style={{ backgroundImage: `url('${IMAGES.upsell2.flatlay}')` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D2D]/60 to-transparent flex items-end justify-center pb-6">
-                <span className="bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full text-xs font-bold text-[#2D2D2D] shadow-sm uppercase tracking-wider">
-                  Instant Access Digital Vault
-                </span>
-              </div>
-            </div>
+          <p className="text-gray-400 text-lg leading-snug">
+            Não adianta ter o mapa se você não souber o próximo passo. A maioria das donas de salão trava na segunda semana porque o caos do dia a dia engole a estratégia.
+          </p>
+
+        </div>
+      </section>
+
+      {/* SECTION 2: THE SOLUTION (White Background) */}
+      <section className="bg-white py-10 px-4">
+        <div className="max-w-md mx-auto text-center">
+
+          <div className="inline-block p-4 bg-gray-50 rounded-full shadow-sm mb-6 border border-gray-100">
+            <Calendar size={40} className="text-[#F2994A]" />
           </div>
-        </div>
 
-        {/* Body Text */}
-        <div className="px-6 pb-6">
-          <p className="text-[#2D2D2D] dark:text-gray-200 text-base font-normal leading-relaxed mb-6">
-            You didn't start a salon to spend your nights writing employee handbooks or inventory sheets. 
-            <br/><br/>
-            <strong>The Salon Systems Vault</strong> gives you my proven, plug-and-play operations manual. Just add your logo and you're ready to lead like a CEO.
+          <h2 className="text-2xl font-extrabold text-[#2D2D2D] mb-2 uppercase">
+            O ROTEIRO DE AÇÃO DE 90 DIAS
+          </h2>
+          <p className="text-gray-600 mb-8 max-w-sm mx-auto">
+            Um plano dia-a-dia. Não pense. Apenas acorde, olhe a tarefa do dia e execute.
           </p>
-          <ul className="space-y-3 mb-2">
+
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-left space-y-4">
             {[
-              "Copy-paste hiring scripts that attract top talent",
-              "Iron-clad employee handbook template",
-              "Automated inventory trackers to stop leaks"
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-[#ec6d13] shrink-0">check_circle</span>
-                <span className="text-sm text-[#2D2D2D] dark:text-gray-300 font-medium">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Pricing Stack */}
-        <div className="px-4 pb-8">
-          <div className="bg-[#F5E6E0]/40 dark:bg-white/5 rounded-xl border border-[#F5E6E0] dark:border-white/10 overflow-hidden">
-            <div className="bg-[#F5E6E0] dark:bg-white/10 px-4 py-3 text-center border-b border-white/50 dark:border-white/10">
-              <h3 className="text-[#2D2D2D] dark:text-white font-bold text-lg">What's Inside The Vault</h3>
-            </div>
-            <div className="p-5 grid grid-cols-1 gap-y-4">
-              {[
-                { name: "Hiring Scripts & Templates", price: "$97.00" },
-                { name: "Employee Handbook", price: "$197.00" },
-                { name: "Inventory Tracker System", price: "$47.00" }
-              ].map((item, i) => (
-                <div key={i} className="flex justify-between items-center border-b border-[#2D2D2D]/5 pb-2 border-dashed">
-                  <span className="text-[#2D2D2D] dark:text-gray-300 font-medium text-sm">{item.name}</span>
-                  <span className="text-[#B8860B] dark:text-[#ec6d13] font-bold text-sm">{item.price}</span>
-                </div>
-              ))}
-              <div className="flex justify-between items-end mt-2 pt-2">
-                <div className="flex flex-col">
-                  <span className="text-gray-500 text-xs uppercase tracking-wide">Total Value</span>
-                  <span className="text-gray-400 line-through text-lg font-medium">$341.00</span>
-                </div>
-                <div className="flex flex-col items-end">
-                  <span className="text-[#ec6d13] font-bold text-sm uppercase tracking-wide">One-Time Offer</span>
-                  <span className="text-[#2D2D2D] dark:text-white text-4xl font-extrabold tracking-tight">$67</span>
-                </div>
+              { bold: "Tarefas Diárias:", text: "A única coisa que você precisa fazer hoje para crescer." },
+              { bold: "Foco Semanal:", text: "Semanas de Vendas, Semanas de Gestão, Semanas de Equipe." },
+              { bold: "Rastreador de Progresso:", text: "Veja sua evolução visualmente e não desanime." },
+              { bold: "O 'Quick Win':", text: "Vitórias rápidas para gerar ânimo imediato." }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <Check className="text-[#FFD700] flex-shrink-0 mt-0.5" size={20} />
+                <p className="text-gray-700 text-sm">
+                  <span className="font-bold text-gray-900">{item.bold}</span> {item.text}
+                </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: THE COMPARISON (The "Vs" Box) */}
+      <section className="bg-gray-50 py-10 px-4">
+        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+          <div className="grid grid-cols-2 text-sm divide-x divide-gray-200">
+            {/* Left Side (Failure) */}
+            <div className="p-4 bg-red-50/50 border-r border-red-100">
+              <h3 className="font-bold text-gray-900 mb-3 text-center">Sem o Roteiro</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-gray-600 leading-tight">
+                  <X size={16} className="text-red-500 flex-shrink-0" />
+                  <span>Ações aleatórias (atira pra todo lado)</span>
+                </li>
+                <li className="flex items-start gap-2 text-gray-600 leading-tight">
+                  <X size={16} className="text-red-500 flex-shrink-0" />
+                  <span>Sempre ocupada, mas nunca produtiva</span>
+                </li>
+                <li className="flex items-start gap-2 text-gray-600 leading-tight">
+                  <X size={16} className="text-red-500 flex-shrink-0" />
+                  <span>Desiste do método em 2 semanas</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right Side (Success) */}
+            <div className="p-4 bg-green-50/50 border-l border-green-100">
+              <h3 className="font-bold text-gray-900 mb-3 text-center">Com o Roteiro CEO</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-gray-800 leading-tight font-medium">
+                  <Check size={16} className="text-green-600 flex-shrink-0" />
+                  <span>Ações Estratégicas e Claras</span>
+                </li>
+                <li className="flex items-start gap-2 text-gray-800 leading-tight font-medium">
+                  <Check size={16} className="text-green-600 flex-shrink-0" />
+                  <span>Progresso Consistente todo dia</span>
+                </li>
+                <li className="flex items-start gap-2 text-gray-800 leading-tight font-medium">
+                  <Check size={16} className="text-green-600 flex-shrink-0" />
+                  <span>Transformação completa em 3 meses</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* CTA */}
-        <div className="px-4 pb-12 flex flex-col items-center gap-4">
-          <button onClick={handleYes} className="w-full bg-[#ec6d13] hover:bg-[#d55e0d] text-white rounded-lg py-4 px-6 shadow-lg shadow-[#ec6d13]/20 transition-all active:scale-[0.98] flex flex-col items-center justify-center group">
-            <span className="text-lg font-bold leading-none mb-1">Yes! Upgrade My Order</span>
-            <span className="text-sm font-medium opacity-90 leading-none">Get the complete system for just $67</span>
-          </button>
-          <div className="flex items-center gap-2 text-gray-400 mb-2">
-            <span className="material-symbols-outlined text-[16px]">lock</span>
-            <span className="text-xs font-medium">Secure 256-bit SSL Encryption</span>
+
+      {/* SECTION 4: THE OFFER (Impulse Buy) */}
+      <section className="bg-white py-12 px-4 pb-20">
+        <div className="max-w-md mx-auto">
+
+          <div className="border-2 border-[#F2C94C] rounded-xl p-6 text-center shadow-lg relative overflow-hidden bg-white">
+
+            <p className="text-gray-500 text-sm mb-1">Valor Individual: <span className="line-through">R$ 197,00</span></p>
+            <p className="text-gray-900 font-bold mb-6">
+              Adicionar ao pedido por <span className="bg-[#1A1A1A] text-[#FFD700] rounded-full px-4 py-1 text-4xl font-extrabold inline-block mt-2 shadow-sm">R$ 47,00</span>
+            </p>
+
+            <button
+              onClick={handleYes}
+              className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-black font-extrabold text-lg py-4 rounded-lg shadow-[0_4px_15px_rgba(242,153,74,0.4)] hover:shadow-[0_6px_20px_rgba(242,153,74,0.6)] transform transition hover:scale-105 mb-4 leading-tight border border-[#F2C94C]"
+            >
+              SIM! QUERO O ROTEIRO DE 90 DIAS
+            </button>
+
+            <button
+              onClick={handleNo}
+              className="text-xs text-gray-400 hover:text-gray-600 underline max-w-xs mx-auto block leading-relaxed"
+            >
+              Não, obrigado. Eu confio na minha própria disciplina para manter o foco sozinha sem um plano.
+            </button>
+
+            <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-400 opacity-80">
+              <ShieldCheck size={14} />
+              <span>Compra 100% Segura</span>
+            </div>
           </div>
-          <button onClick={handleNo} className="text-gray-500 dark:text-gray-400 hover:text-[#2D2D2D] dark:hover:text-white text-sm font-medium underline decoration-gray-300 underline-offset-4 transition-colors text-center px-8">
-            No thanks, I'll create my own systems from scratch.
-          </button>
+
         </div>
-        <div className="h-10 bg-transparent"></div>
-      </div>
+      </section>
+
+      {/* SECTION 5: FOOTER */}
+      <footer className="bg-[#FAF8F5] py-8 border-t border-gray-200 text-center mt-auto">
+        <p className="text-gray-400 text-xs font-medium">
+          © 2026 Protocolo Salão CEO
+        </p>
+      </footer>
+
     </div>
   );
 };

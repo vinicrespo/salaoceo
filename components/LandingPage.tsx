@@ -1,67 +1,65 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-import Hero from './Hero';
-import Agitation from './Agitation';
-import Bridge from './Bridge';
-import ScaleDiagnostic from './ScaleDiagnostic';
-import SocialProof from './SocialProof';
-import Qualification from './Qualification';
-import Pricing from './Pricing';
-import FAQ from './FAQ';
-import FinalCTA from './FinalCTA';
-
-import StickyBottomBar from './StickyBottomBar';
+import React, { useState } from 'react';
+import Hero from './vsl/Hero';
+import SocialProof from './vsl/SocialProof';
+import Mechanism from './vsl/Mechanism';
+import Offer from './vsl/Offer';
+import Guarantee from './vsl/Guarantee';
+import FAQ from './vsl/FAQ';
+import UpsellModal from './vsl/UpsellModal';
 import Footer from './Footer';
-import UpgradePopup from './UpgradePopup';
 
 const LandingPage: React.FC = () => {
-  const [isUpgradePopupOpen, setIsUpgradePopupOpen] = React.useState(false);
+  const [showUpsellModal, setShowUpsellModal] = useState(false);
 
-  // Placeholder Checkout URLs - REPLACE THESE WITH YOUR HOTMART LINKS
-  const CHECKOUT_BASIC_990 = 'https://pay.hotmart.com/PLACEHOLDER_BASIC_990';
-  const CHECKOUT_COMPLETE_37 = 'https://pay.hotmart.com/PLACEHOLDER_COMPLETE_37';
-  const CHECKOUT_COMPLETE_DISCOUNT_27 = 'https://pay.hotmart.com/PLACEHOLDER_COMPLETE_27';
-
-  const handleBuy = (plan: 'basic' | 'complete') => {
-    if (plan === 'basic') {
-      setIsUpgradePopupOpen(true);
-    } else {
-      window.location.href = CHECKOUT_COMPLETE_37;
+  // Smooth scroll to pricing section
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleUpgradeConfirm = () => {
-    window.location.href = CHECKOUT_COMPLETE_DISCOUNT_27;
-  };
+  const handleBuy = (option: 'complete_37' | 'complete_27' | 'basic_10') => {
+    console.log(`User selected purchase option: ${option}`);
+    // Here you would integrate with your checkout system URL (e.g., Hotmart, Kiwify)
+    // Example:
+    // if (option === 'complete_37') window.location.href = 'CHECKOUT_URL_37';
+    // if (option === 'complete_27') window.location.href = 'CHECKOUT_URL_27_OFFER';
+    // if (option === 'basic_10') window.location.href = 'CHECKOUT_URL_10_BASIC';
 
-  const handleUpgradeDecline = () => {
-    window.location.href = CHECKOUT_BASIC_990;
-  };
-
-  const scrollToPricing = () => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    alert(`Redirecionando para checkout: ${option}`);
   };
 
   return (
-    <div className="bg-[#FAF8F5] text-[#2D2D2D] font-display antialiased overflow-x-hidden">
-      {/* Navbar Removed for Direct Traffic - VSL Focus */}
+    <div className="font-sans antialiased text-[#2D2D2D] bg-white min-h-screen flex flex-col">
       <Hero onCtaClick={scrollToPricing} />
-      <Agitation />
-      <Bridge />
-      <ScaleDiagnostic />
+
       <SocialProof />
-      <Pricing onBuy={handleBuy} /> {/* Moved Up */}
-      <Qualification />
+
+      <Mechanism />
+
+      <Offer
+        onBuyComplete={() => handleBuy('complete_37')}
+        onBuyBasic={() => setShowUpsellModal(true)}
+      />
+
+      <Guarantee />
+
       <FAQ />
-      <FinalCTA onBuy={handleBuy} />
 
       <Footer />
-      <UpgradePopup
-        isOpen={isUpgradePopupOpen}
-        onClose={() => setIsUpgradePopupOpen(false)}
-        onConfirmUpgrade={handleUpgradeConfirm}
-        onDeclineUpgrade={handleUpgradeDecline}
+
+      <UpsellModal
+        isOpen={showUpsellModal}
+        onClose={() => setShowUpsellModal(false)}
+        onAccept={() => {
+          setShowUpsellModal(false);
+          handleBuy('complete_27');
+        }}
+        onDecline={() => {
+          setShowUpsellModal(false);
+          handleBuy('basic_10');
+        }}
       />
     </div>
   );

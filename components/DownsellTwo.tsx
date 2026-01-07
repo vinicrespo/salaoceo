@@ -1,127 +1,142 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IMAGES } from '../constants';
+import { Hand, Clock, ShieldCheck, Lock, Check } from 'lucide-react';
 
 const DownsellTwo: React.FC = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleYes = () => {
+    console.log('Downsell 2 Accepted: Roteiro 90 Dias (R$ 27)');
+    // Proceed to Thank You page
     navigate('/thank-you');
   };
 
   const handleNo = () => {
+    console.log('Downsell 2 Declined');
+    // Proceed to Thank You page
     navigate('/thank-you');
   };
 
   return (
-    <div className="bg-[#FAF8F5] dark:bg-[#221810] min-h-screen text-[#2D2D2D] dark:text-gray-100 flex flex-col items-center font-display">
-      <div className="w-full max-w-[480px] bg-white dark:bg-[#1a120b] min-h-screen shadow-2xl relative flex flex-col overflow-hidden">
-        
-        {/* Urgency Banner */}
-        <div className="bg-[#ec6d13] px-4 py-3 sticky top-0 z-50 shadow-md">
-          <div className="flex items-center justify-center gap-2">
-            <span className="material-symbols-outlined text-white text-[20px]">warning</span>
-            <p className="text-white text-sm font-bold tracking-wide uppercase text-center leading-tight">FINAL CHANCE — Exclusive Discount!</p>
+    <div className="font-sans antialiased bg-white min-h-screen flex flex-col">
+
+      {/* SECTION 1: THE EMPATHY HOOK (Hero - Dark Background) */}
+      <section className="bg-[#1A1A1A] text-white pt-8 pb-10 px-4 text-center border-b border-[#333]">
+        <div className="max-w-md mx-auto space-y-4">
+
+          <div className="flex justify-center mb-2">
+            <Hand size={48} className="text-[#FFD700]" />
           </div>
+
+          <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">
+            Eu não posso deixar você ir embora sem isso.
+          </h1>
+
+          <p className="text-gray-400 text-lg leading-snug">
+            Vamos ser sinceras: Saber O QUE fazer é fácil. O difícil é manter a constância por 90 dias. Eu prefiro derrubar o preço agora do que te ver desistir na segunda semana.
+          </p>
+
         </div>
+      </section>
 
-        <div className="flex-1 overflow-y-auto pb-32">
-          {/* Hero Image */}
-          <div className="relative w-full h-[200px] overflow-hidden">
-            <div className="absolute inset-0 bg-black/20 z-10"></div>
-            <img alt="Elegant modern salon interior" className="w-full h-full object-cover" src={IMAGES.downsell2.interior} />
-            <div className="absolute bottom-0 left-0 w-full p-6 z-20 bg-gradient-to-t from-black/80 to-transparent">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C9A227]/90 text-white text-xs font-bold mb-2 backdrop-blur-sm">
-                <span className="material-symbols-outlined text-[16px]">lock_open</span>
-                System Vault Unlocked
-              </div>
-            </div>
-          </div>
+      {/* SECTION 2: THE "NO EXCUSES" OFFER (White Background) */}
+      <section className="bg-white py-10 px-4">
+        <div className="max-w-md mx-auto text-center">
 
-          {/* Headline */}
-          <div className="px-6 pt-6 pb-2 text-center">
-            <h1 className="text-[#2D2D2D] dark:text-white text-[28px] font-bold leading-[1.2] tracking-tight mb-3">
-              Wait! Get The Complete <span className="text-[#ec6d13] underline decoration-[#F5E6E0] underline-offset-4">Systems Vault</span> For Just <span className="text-[#ec6d13]">$37</span>
-            </h1>
-            <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
-              This is your <b className="text-[#2D2D2D] dark:text-white">last opportunity</b> to grab these plug-and-play templates before the price goes back up to $197.
+          <div className="border-2 border-[#F2C94C] rounded-xl p-6 shadow-lg relative bg-white">
+            <p className="text-xs font-bold text-[#F2C94C] uppercase tracking-widest mb-4">
+              DESCONTO FINAL DE PARCEIRA
+            </p>
+
+            <p className="text-gray-500 text-sm mb-1">De <span className="line-through">R$ 47,00</span></p>
+
+            <p className="text-gray-900 font-bold mb-4">
+              <span className="bg-[#1A1A1A] text-[#FFD700] rounded-full px-4 py-1 text-4xl font-extrabold inline-block mt-2 shadow-sm">POR R$ 27,00</span>
+            </p>
+
+            <p className="text-gray-500 text-xs font-medium">
+              Isso é menos de R$ 0,30 centavos por dia de planejamento.
             </p>
           </div>
 
-          {/* Timer */}
-          <div className="px-6 py-4 flex justify-center">
-            <div className="flex gap-3 items-center bg-[#F5E6E0]/30 dark:bg-white/5 px-4 py-2 rounded-lg border border-[#F5E6E0] dark:border-white/10">
-              <span className="material-symbols-outlined text-[#B8860B] dark:text-[#ec6d13]">timer</span>
-              <div className="flex gap-1 text-[#B8860B] dark:text-[#ec6d13] font-mono font-bold text-lg">
-                <span>00</span>:<span>14</span>:<span>59</span>
-              </div>
-              <span className="text-xs uppercase tracking-wider text-gray-500 font-medium ml-1">Remaining</span>
-            </div>
-          </div>
+        </div>
+      </section>
 
-          {/* Value Card */}
-          <div className="px-5 py-2">
-            <div className="bg-[#FAF8F5] dark:bg-[#2c241b] rounded-xl p-5 border border-[#C9A227]/20 shadow-sm">
-              <div className="flex items-center gap-2 mb-4 border-b border-gray-200 dark:border-gray-700 pb-3">
-                <span className="material-symbols-outlined text-[#C9A227]">inventory_2</span>
-                <h3 className="text-lg font-bold text-[#2D2D2D] dark:text-white">What's Inside The Vault?</h3>
-              </div>
-              <ul className="space-y-3">
-                {[
-                  { name: "Client Intake Forms", desc: "Streamline your new client onboarding process." },
-                  { name: "Stylist Hiring Contracts", desc: "Protect your business with iron-clad agreements." },
-                  { name: "Inventory Tracking Sheets", desc: "Stop losing money on wasted product." },
-                  { name: "Revenue Projection Calculator", desc: "Know exactly where your profit is coming from." }
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-green-600 dark:text-green-400 shrink-0 text-[20px] mt-0.5">check_circle</span>
-                    <div>
-                      <p className="text-sm font-semibold text-[#2D2D2D] dark:text-gray-200">{item.name}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{item.desc}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+      {/* SECTION 3: REASSURANCE (You get everything) */}
+      <section className="bg-gray-50 py-10 px-4 border-t border-gray-100">
+        <div className="max-w-md mx-auto">
+          <h3 className="font-bold text-[#2D2D2D] text-lg text-center mb-6">
+            Você ainda recebe o ROTEIRO COMPLETO:
+          </h3>
 
-          {/* Pricing */}
-          <div className="px-6 py-6 text-center">
-            <div className="inline-block relative">
-              <p className="text-gray-400 dark:text-gray-500 text-lg font-medium line-through decoration-red-500 decoration-2">Total Value: $197</p>
-            </div>
-            <div className="mt-1 flex items-center justify-center gap-2">
-              <p className="text-4xl font-extrabold text-[#2D2D2D] dark:text-white">Only <span className="text-[#ec6d13]">$37</span></p>
-            </div>
-            <p className="text-xs text-gray-500 mt-2 italic">One-time payment. Instant access.</p>
-          </div>
-
-          {/* Trust */}
-          <div className="px-6 pb-6 flex justify-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm space-y-4">
             {[
-              { icon: "verified_user", text: "Secure" },
-              { icon: "bolt", text: "Instant" },
-              { icon: "star", text: "Top Rated" }
-            ].map((t, i) => (
-              <div key={i} className="flex flex-col items-center gap-1">
-                <span className="material-symbols-outlined text-gray-600 dark:text-gray-400">{t.icon}</span>
-                <span className="text-[10px] text-gray-600 dark:text-gray-400 font-medium">{t.text}</span>
+              "As tarefas diárias de 'Vitória Rápida'.",
+              "Os temas de foco semanal.",
+              "O Rastreador de Progresso Visual.",
+              "Acesso Vitalício ao Plano."
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-3">
+                <Check className="text-[#FFD700] flex-shrink-0" size={20} />
+                <p className="text-gray-700 text-sm font-medium">{item}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Footer CTA */}
-        <div className="absolute bottom-0 left-0 w-full bg-white dark:bg-[#1a120b] border-t border-gray-100 dark:border-gray-800 p-4 pb-8 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40">
-          <button onClick={handleYes} className="w-full bg-[#ec6d13] hover:bg-orange-600 text-white font-bold text-lg py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 mb-4 group">
-            Yes! Give Me Everything — $37
-            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      {/* SECTION 4: URGENCY & CTA */}
+      <section className="bg-white py-12 px-4 pb-20">
+        <div className="max-w-md mx-auto text-center">
+
+          <div className="flex items-center justify-center gap-2 text-[#E85D04] font-bold text-xs uppercase tracking-wide mb-6">
+            <Clock size={16} />
+            <span>Quando você sair dessa página, o preço volta para R$ 97 normais. É agora ou nunca.</span>
+          </div>
+
+          <button
+            onClick={handleYes}
+            className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-[#000000] font-extrabold text-lg py-4 rounded-lg shadow-[0_4px_15px_rgba(242,153,74,0.4)] hover:shadow-[0_6px_20px_rgba(242,153,74,0.6)] transform transition hover:scale-105 mb-4 leading-tight border border-[#F2C94C]"
+          >
+            SIM! QUERO O PLANO POR R$ 27
+            <span className="block text-xs font-medium opacity-80 mt-1 uppercase tracking-wide text-[#000000]">Adicionar ao meu pedido agora</span>
           </button>
-          <button onClick={handleNo} className="block w-full text-center text-sm font-medium text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
-            No thanks, I'll figure it out on my own.
+
+          <button
+            onClick={handleNo}
+            className="text-xs text-gray-400 hover:text-gray-600 underline max-w-xs mx-auto block leading-relaxed"
+          >
+            Não, obrigado. Eu vou tentar descobrir o que fazer dia a dia sozinha, sem um mapa.
           </button>
+
+          {/* Secure Text */}
+          <div className="flex items-center justify-center gap-1 text-xs font-bold text-gray-400 mt-6">
+            <Lock size={12} />
+            <span>Checkout Seguro</span>
+          </div>
+
         </div>
-      </div>
+      </section>
+
+      {/* SECTION 5: FOOTER */}
+      <footer className="bg-[#FAF8F5] py-8 border-t border-gray-200 text-center mt-auto">
+        <div className="flex items-center justify-center gap-4 opacity-50 grayscale mb-4">
+          <div className="flex items-center gap-1 text-[10px] font-bold text-gray-500 uppercase">
+            <Lock size={12} /> SSL Secure
+          </div>
+          <div className="flex items-center gap-1 text-[10px] font-bold text-gray-500 uppercase">
+            <ShieldCheck size={12} /> Privacy Protected
+          </div>
+        </div>
+        <p className="text-gray-400 text-[10px] font-medium">
+          © 2026 Protocolo Salão CEO
+        </p>
+      </footer>
+
     </div>
   );
 };

@@ -1,106 +1,80 @@
-import React from 'react';
-import { IMAGES } from '../constants';
+import React, { useEffect } from 'react';
+import { Mail, Check } from 'lucide-react';
 
 const ThankYou: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="bg-[#f8f7f6] dark:bg-[#221810] font-display text-[#2D2D2D] dark:text-gray-100 antialiased overflow-x-hidden min-h-screen">
-      <div className="relative flex h-auto min-h-screen w-full flex-col max-w-md mx-auto bg-[#f8f7f6] dark:bg-[#221810] shadow-2xl">
-        
-        {/* Top Branding */}
-        <div className="flex items-center bg-[#f8f7f6] dark:bg-[#221810] p-4 pb-2 justify-center">
-          <h2 className="text-[#C9A227] text-xs font-bold leading-tight tracking-widest uppercase text-center">Salon Profit Lab</h2>
-        </div>
+    <div className="bg-[#FAF8F5] font-sans antialiased text-[#6B6B6B] min-h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl overflow-hidden relative">
 
-        {/* Hero Section */}
-        <div className="flex flex-col items-center pt-8 pb-4 px-4">
-          <div className="mb-2 flex items-center justify-center h-20 w-20 rounded-full bg-[#ec6d13]/10 text-[#ec6d13] animate-bounce shadow-sm">
-            <span className="material-symbols-outlined text-[48px]">check_circle</span>
+        <div className="px-8 py-10 flex flex-col items-center text-center">
+
+          {/* SECTION 1: THE CELEBRATION */}
+          <div className="w-20 h-20 rounded-full border-4 border-[#FFD700] flex items-center justify-center mb-6 shadow-sm animate-bounce">
+            <Check className="text-[#FFD700]" size={40} strokeWidth={4} />
           </div>
-          <h1 className="text-[#2D2D2D] dark:text-white tracking-tight text-[32px] font-bold leading-tight px-4 text-center pb-2 pt-4">You're In!</h1>
-          <h2 className="text-[#2D2D2D] dark:text-gray-200 text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-center pb-2">Welcome to Salon Profit Lab</h2>
-          <p className="text-gray-600 dark:text-gray-400 text-base font-normal leading-normal pb-3 pt-1 px-6 text-center">
-            Your order was successful. We are excited to help you grow your salon.
+
+          <h1 className="text-[#2D2D2D] text-2xl font-bold leading-tight mb-2">
+            Parabéns! Sua inscrição está confirmada.
+          </h1>
+
+          <p className="text-gray-500 text-lg mb-8 leading-snug">
+            Você acabou de tomar a decisão certa para o crescimento do seu salão.
           </p>
-        </div>
 
-        {/* Confirmation Card */}
-        <div className="px-6 py-2 w-full">
-          <div className="bg-[#F5E6E0] dark:bg-[#2c2420] rounded-lg p-4 border border-[#C9A227]/30 dark:border-[#C9A227]/10 flex flex-col items-center justify-center gap-1 shadow-sm">
-            <div className="flex items-center gap-2 text-[#2D2D2D] dark:text-[#F5E6E0] font-bold text-lg">
-              <span>Order Confirmed</span>
-              <span className="material-symbols-outlined text-[#ec6d13] text-xl font-bold">check</span>
-            </div>
-            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Order #8392-SPL • Total: $297.00
-            </div>
-          </div>
-        </div>
-
-        <div className="h-6 w-full"></div>
-
-        {/* Next Steps */}
-        <div className="px-6 flex-1">
-          <h3 className="text-lg font-bold text-[#2D2D2D] dark:text-white mb-6 pl-1">What Happens Next</h3>
-          <div className="flex flex-col gap-6 relative pl-2">
-            <div className="absolute left-[23px] top-4 bottom-4 w-[2px] bg-gray-200 dark:bg-gray-700"></div>
-            {[
-              { icon: "mail", title: "Check your inbox", desc: "We've sent your login details and receipt to your email address." },
-              { icon: "download", title: "Download materials", desc: "Get immediate access to your welcome kit and guides." },
-              { icon: "play_circle", title: "Start learning", desc: "Jump into Module 1 and start transforming your salon." }
-            ].map((step, i) => (
-              <div key={i} className="relative flex items-start gap-5 z-10 group">
-                <div className="flex-shrink-0 w-12 h-12 bg-white dark:bg-[#33251a] rounded-full border-2 border-[#FAF8F5] dark:border-gray-600 flex items-center justify-center shadow-md text-[#ec6d13] group-hover:scale-110 transition-transform duration-300">
-                  <span className="material-symbols-outlined">{step.icon}</span>
+          {/* SECTION 2: ACCESS INSTRUCTIONS (Gold Box) */}
+          <div className="w-full bg-[#FAF8F5] border border-[#FFD700]/30 rounded-xl p-6 mb-6 text-left shadow-sm">
+            <h3 className="font-bold text-[#2D2D2D] mb-4 border-b border-gray-200 pb-2 text-sm uppercase tracking-wide">
+              Como acessar seu material agora:
+            </h3>
+            <ul className="space-y-4 text-gray-600">
+              <li className="flex gap-3 items-start">
+                <span className="bg-[#FFD700] text-[#3E2700] text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">1</span>
+                <div>
+                  <span className="font-bold text-gray-900 block text-sm">Vá para o seu e-mail:</span>
+                  <span className="text-sm">O mesmo que você cadastrou na compra.</span>
                 </div>
-                <div className="pt-1">
-                  <h4 className="font-bold text-[#2D2D2D] dark:text-gray-100 text-base">{step.title}</h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">{step.desc}</p>
+              </li>
+              <li className="flex gap-3 items-start">
+                <span className="bg-[#FFD700] text-[#3E2700] text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">2</span>
+                <div>
+                  <span className="font-bold text-gray-900 block text-sm">Procure pelo título:</span>
+                  <span className="text-sm">"Acesso ao Protocolo Salão CEO".</span>
                 </div>
-              </div>
-            ))}
+              </li>
+              <li className="flex gap-3 items-start">
+                <span className="bg-[#FFD700] text-[#3E2700] text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">3</span>
+                <div>
+                  <span className="font-bold text-gray-900 block text-sm">Verifique o SPAM:</span>
+                  <span className="text-sm">Se não estiver na caixa de entrada, olhe na caixa de SPAM ou na aba "Promoções".</span>
+                </div>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        <div className="h-10 w-full"></div>
-
-        <div className="px-6">
-          <button className="w-full bg-[#ec6d13] hover:bg-[#d65f0e] active:bg-[#c0530a] text-white font-bold text-[17px] py-4 px-6 rounded-lg shadow-lg shadow-[#ec6d13]/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
-            Access Your Materials Now
-            <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-          </button>
-        </div>
-
-        <div className="h-8 w-full"></div>
-
-        <div className="px-6 pb-6">
-          <div className="bg-white dark:bg-[#2c2420] rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700">
-            <div className="flex gap-4 items-start">
-              <div className="w-16 h-16 rounded-lg bg-gray-200 bg-cover bg-center shrink-0 shadow-inner" style={{ backgroundImage: `url('${IMAGES.thankyou.community}')` }}></div>
-              <div>
-                <p className="text-[11px] font-bold text-[#C9A227] uppercase tracking-wide mb-1">Your First Action</p>
-                <h4 className="font-bold text-[#2D2D2D] dark:text-white text-base leading-tight">Join the Private Community</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Connect with 5,000+ salon owners.</p>
-              </div>
-            </div>
-            <div className="mt-4">
-              <button className="w-full py-3 px-4 rounded-lg border border-[#2D2D2D] dark:border-gray-500 text-[#2D2D2D] dark:text-gray-200 font-semibold text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex justify-center items-center gap-2">
-                <span className="material-symbols-outlined text-lg">group</span>
-                Join Facebook Group
-              </button>
-            </div>
+          {/* SECTION 3: THE "NO-PANIC" NOTICE */}
+          <div className="bg-blue-50 text-blue-800 px-4 py-3 rounded-lg flex items-start gap-3 text-sm text-left mb-8">
+            <Mail size={20} className="flex-shrink-0 mt-0.5" />
+            <p>
+              O e-mail de acesso pode levar até 5 minutos para chegar. Não feche essa página até confirmar que recebeu.
+            </p>
           </div>
-        </div>
 
-        <div className="px-6 pb-10 text-center border-t border-gray-200/60 dark:border-gray-700 pt-8 mt-4 bg-[#f8f7f6] dark:bg-[#221810]">
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Need help with your order?</p>
-          <a className="text-[#ec6d13] font-medium text-sm hover:text-[#C9A227] transition-colors flex items-center justify-center gap-1" href="mailto:support@salonprofitlab.com">
-            <span className="material-symbols-outlined text-base">mail</span>
-            Contact support@salonprofitlab.com
-          </a>
-          <p className="text-xs text-gray-400 dark:text-gray-600 mt-8">
-            © 2023 Salon Profit Lab. All rights reserved.
+          {/* SECTION 4: FOOTER */}
+          <p className="font-bold text-[#2D2D2D] text-lg flex items-center gap-2 mb-8">
+            Seja bem-vinda ao Salão CEO. <span className="text-red-500">❤️</span>
           </p>
+
         </div>
+
+        {/* Footer Copyright */}
+        <div className="bg-[#FAF8F5] py-4 text-center border-t border-gray-100">
+          <p className="text-[10px] text-gray-400">© 2026 Protocolo Salão CEO</p>
+        </div>
+
       </div>
     </div>
   );

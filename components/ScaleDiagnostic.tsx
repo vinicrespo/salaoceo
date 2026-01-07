@@ -2,58 +2,69 @@ import React from 'react';
 
 const ScaleDiagnostic: React.FC = () => {
     return (
-        <section className="bg-[#FAF8F5] py-16 px-4">
-            <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D2D] mb-3">
-                        The <span className="text-[#C9A227]">S.C.A.L.E.</span> Diagnostic™
-                    </h2>
-                    <p className="text-[#2D2D2D]/70 text-base sm:text-lg max-w-xl mx-auto">
-                        A 5-part framework to find (and fix) what's holding your salon back
-                    </p>
-                </div>
+        <section className="bg-[#F5E6E0] py-16 px-4">
+            <div className="max-w-md mx-auto">
+                {/* Title */}
+                <h2 className="text-center text-[26px] font-bold text-[#2D2D2D] mb-10 leading-tight">
+                    3 Steps to S.C.A.L.E. Your Profit
+                </h2>
 
-                <div className="space-y-4">
-                    {[
-                        {
-                            letter: 'S',
-                            title: 'Systems',
-                            desc: "Can your salon run for a week without you? If not, you don't have a business — you have a dependency."
-                        },
-                        {
-                            letter: 'C',
-                            title: 'Clients',
-                            desc: "Are your clients coming back? Referring friends? Or are you constantly chasing new ones to replace the ones who disappear?"
-                        },
-                        {
-                            letter: 'A',
-                            title: 'Average Ticket',
-                            desc: "When's the last time you raised your prices? Most salon owners leave thousands on the table because they're afraid of one uncomfortable conversation."
-                        },
-                        {
-                            letter: 'L',
-                            title: 'Leverage',
-                            desc: "Are you the only one who can do what you do? That's a ceiling, not a badge of honor."
-                        },
-                        {
-                            letter: 'E',
-                            title: 'Efficiency',
-                            desc: "How much of your week is spent on things that don't make money? That's where your profit is hiding."
-                        }
-                    ].map((item, i) => (
-                        <div key={i} className="group relative overflow-hidden rounded-xl bg-white border border-gray-100 shadow-soft transition-all hover:shadow-card">
-                            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#C9A227]"></div>
-                            <div className="p-5 sm:p-6 flex gap-4 items-start">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#C9A227]/10 text-[#C9A227] font-black text-2xl">
-                                    {item.letter}
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-lg sm:text-xl text-[#2D2D2D]">{item.title}</h3>
-                                    <p className="text-sm sm:text-base text-gray-600 mt-1 leading-relaxed">{item.desc}</p>
-                                </div>
-                            </div>
+                {/* Timeline Steps Container */}
+                <div className="relative pl-4 flex flex-col">
+
+                    {/* Step 1 */}
+                    <div className="relative flex items-start gap-4 pb-12">
+                        {/* Connecting Line (To Step 2) */}
+                        <div className="absolute left-[23px] top-6 bottom-[-24px] w-0.5 bg-[#C9A227]/30"></div>
+
+                        <div className="z-10 flex-shrink-0 w-12 h-12 bg-white rounded-full border-2 border-[#C9A227] flex items-center justify-center shadow-lg text-[#2D2D2D]">
+                            <span className="material-symbols-outlined">lock_open</span>
                         </div>
-                    ))}
+                        <div className="pt-2 relative z-10">
+                            <h3 className="font-bold text-[#2D2D2D] text-lg leading-tight">
+                                Access The System
+                            </h3>
+                            <p className="text-gray-600 text-sm mt-1 leading-snug">
+                                Get instant access to the S.C.A.L.E. Diagnostic™ Framework.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Step 2 */}
+                    <div className="relative flex items-start gap-4 pb-12">
+                        {/* Connecting Line (To Step 3) */}
+                        <div className="absolute left-[23px] top-6 bottom-[-24px] w-0.5 bg-[#C9A227]/30"></div>
+
+                        <div className="z-10 flex-shrink-0 w-12 h-12 bg-white rounded-full border-2 border-[#C9A227] flex items-center justify-center shadow-lg text-[#2D2D2D]">
+                            <span className="material-symbols-outlined">travel_explore</span>
+                        </div>
+                        <div className="pt-2 relative z-10">
+                            <h3 className="font-bold text-[#2D2D2D] text-lg leading-tight">
+                                Spot The Hidden Leaks
+                            </h3>
+                            <p className="text-gray-600 text-sm mt-1 leading-snug">
+                                Use the diagnostic checklists to find exactly where you are losing money.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Step 3 */}
+                    <div className="relative flex items-start gap-4">
+                        {/* No Connecting Line */}
+
+                        <div className="z-10 flex-shrink-0 w-12 h-12 bg-[#2D2D2D] rounded-full border-2 border-[#2D2D2D] flex items-center justify-center shadow-lg text-white">
+                            <span className="material-symbols-outlined">trending_up</span>
+                        </div>
+                        <div className="pt-2 relative z-10">
+                            <h3 className="font-bold text-[#2D2D2D] text-lg leading-tight">
+                                Plug & Profit
+                            </h3>
+                            <p className="text-gray-600 text-sm mt-1 leading-snug">
+                                Implement the fixes immediately to stop the bleeding and increase margins.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

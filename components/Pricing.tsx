@@ -6,95 +6,105 @@ interface PricingProps {
 
 const Pricing: React.FC<PricingProps> = ({ onBuy }) => {
     return (
-        <section id="pricing" className="py-16 px-4 bg-gradient-to-b from-[#F5E6E0]/50 to-[#FAF8F5] relative">
-            <div className="max-w-2xl mx-auto">
-                <h2 className="text-center text-3xl font-bold text-[#2D2D2D] mb-2">Choose Your Path</h2>
-                <p className="text-center text-gray-600 mb-10 text-sm sm:text-base">One-time payment. Lifetime access. 30-day guarantee.</p>
+        <section id="pricing" className="py-12 px-4 bg-[#FAF8F5]">
+            <div className="max-w-md mx-auto flex flex-col gap-8">
 
-                <div className="flex flex-col gap-6">
-                    {/* Basic Plan */}
-                    <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-soft relative">
-                        <h3 className="text-lg font-bold text-gray-600 uppercase tracking-wide">The S.C.A.L.E. Blueprint</h3>
-                        <div className="mt-4 mb-6">
-                            <span className="text-4xl font-bold text-[#2D2D2D]">$9.90</span>
-                            <span className="text-gray-500 text-sm ml-1">one-time</span>
-                        </div>
-                        <ul className="space-y-3 mb-8">
-                            {[
-                                'The complete S.C.A.L.E. Diagnostic™ Framework',
-                                'Step-by-step implementation guide',
-                                '30-day action roadmap'
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                                    <span className="material-symbols-outlined text-[#C9A227] text-lg mt-0.5">check</span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <button
-                            onClick={() => onBuy('basic')}
-                            className="w-full py-3.5 border-2 border-[#C9A227] text-[#C9A227] font-bold rounded-lg hover:bg-[#C9A227] hover:text-white transition-colors"
-                        >
-                            Yes, Fix My Salon
-                        </button>
+                {/* Section Header */}
+                <div className="text-center mb-2">
+                    <h2 className="text-3xl font-bold text-[#2D2D2D] mb-2">Choose Your Path</h2>
+                    <p className="text-gray-500 text-sm">One-time payment. Lifetime access.</p>
+                </div>
+
+                {/* CARD A: COMPLETE BUNDLE (BEST VALUE) */}
+                <div className="relative bg-white rounded-xl border-2 border-[#C9A227] shadow-xl overflow-hidden transform scale-[1.02] z-10">
+                    {/* Badge */}
+                    <div className="bg-[#C9A227] text-white text-center text-xs font-bold uppercase tracking-widest py-1.5">
+                        Best Value — Most Popular
                     </div>
 
-                    {/* Complete Plan */}
-                    <div className="bg-[#FAF8F5] rounded-xl p-6 border-2 border-[#C9A227] shadow-lg relative overflow-hidden transform scale-[1.02]">
-                        <div className="absolute top-0 right-0 bg-[#C9A227] text-white text-xs font-bold px-4 py-1.5 rounded-bl-lg">BEST VALUE</div>
-                        <h3 className="text-lg font-bold text-[#B8860B] uppercase tracking-wide">Complete Bundle + 5 Bonuses</h3>
-                        <div className="mt-4 mb-6">
-                            <span className="text-4xl font-bold text-[#2D2D2D]">$37</span>
-                            <span className="text-gray-500 text-sm ml-1">one-time</span>
+                    <div className="p-6">
+                        <h3 className="text-xl font-extrabold text-[#2D2D2D] uppercase leading-tight mb-1">
+                            Complete Profit Bundle
+                        </h3>
+                        <p className="text-[#C9A227] font-medium text-sm mb-4">
+                            The Full System + All 5 Bonuses
+                        </p>
+
+                        <div className="flex items-baseline gap-2 mb-6 border-b border-gray-100 pb-4">
+                            <span className="text-gray-400 line-through text-sm font-medium">$497 Value</span>
+                            <span className="text-4xl font-extrabold text-[#2D2D2D]">$37</span>
                         </div>
-                        <ul className="space-y-3 mb-8">
-                            <li className="flex items-start gap-3 text-sm text-gray-700">
-                                <span className="material-symbols-outlined text-[#C9A227] text-lg mt-0.5">verified</span>
-                                <span><strong>Everything in the Blueprint</strong>, PLUS:</span>
-                            </li>
+
+                        <ul className="space-y-3 mb-6">
                             {[
-                                '$100K Salon Roadmap',
-                                'Profit-First Pricing Guide',
-                                'Client Retention Playbook',
-                                'Salon Systems Library',
-                                '90-Day Implementation Calendar'
+                                "The S.C.A.L.E. Diagnostic™ System (Main)",
+                                "BONUS 1: The $100K Salon Roadmap",
+                                "BONUS 2: Profit-First Pricing Protocol",
+                                "BONUS 3: Client Retention Playbook",
+                                "BONUS 4: Salon SOPs Library",
+                                "BONUS 5: 90-Day Implementation Calendar"
                             ].map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                                    <span className="material-symbols-outlined text-[#C9A227] text-lg mt-0.5">check</span>
-                                    {item}
+                                <li key={i} className="flex items-start gap-3 text-sm">
+                                    <span className="material-symbols-outlined text-green-600 text-lg shrink-0">check_circle</span>
+                                    <span className="text-gray-700 font-medium">{item}</span>
                                 </li>
                             ))}
                         </ul>
+
                         <button
                             onClick={() => onBuy('complete')}
-                            className="w-full py-3.5 bg-[#C9A227] text-white font-bold rounded-lg hover:bg-[#B8860B] shadow-md transition-all"
+                            className="w-full bg-[#C9A227] hover:bg-[#B8860B] text-white font-bold text-lg py-4 rounded-lg shadow-lg shadow-[#C9A227]/20 transition-all active:scale-[0.98]"
                         >
-                            Yes, Fix My Salon
+                            YES, FIX MY SALON (BEST VALUE)
                         </button>
-                        <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500">
-                            <span className="material-symbols-outlined text-base">lock</span>
-                            Secure SSL Payment
-                        </div>
                     </div>
                 </div>
 
-                {/* Guarantee */}
-                <div className="mt-12 bg-white p-8 rounded-2xl border-2 border-green-500/20 shadow-sm relative overflow-hidden">
-                    <div className="flex flex-col md:flex-row gap-6 items-start">
-                        <div className="shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-green-100 text-green-600">
-                            <span className="material-symbols-outlined text-3xl">verified_user</span>
+                {/* CARD B: BASIC (CORE FRAMEWORK) */}
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+                    <div className="p-6">
+                        <h3 className="text-lg font-bold text-[#2D2D2D] uppercase leading-tight mb-1">
+                            Core Framework
+                        </h3>
+                        <p className="text-gray-400 text-sm mb-4">
+                            The Diagnostic Tool Only
+                        </p>
+
+                        <div className="flex items-baseline gap-2 mb-6 border-b border-gray-100 pb-4">
+                            <span className="text-3xl font-bold text-[#2D2D2D]">$9.90</span>
                         </div>
-                        <div>
-                            <h3 className="font-bold text-xl text-[#2D2D2D] mb-2">🛡️ 30-Day "Actually Useful" Guarantee</h3>
-                            <p className="text-gray-600 leading-relaxed mb-4">
-                                If you go through the S.C.A.L.E. Blueprint and don't find at least ONE profit leak you can fix immediately, just email us and we'll refund every penny. No questions. No hassle. No hard feelings.
-                            </p>
-                            <p className="font-medium text-[#2D2D2D] text-sm italic">
-                                You're not risking $37. You're risking staying stuck.
-                            </p>
-                        </div>
+
+                        <ul className="space-y-3 mb-6">
+                            <li className="flex items-start gap-3 text-sm">
+                                <span className="material-symbols-outlined text-[#6B6B6B] text-lg shrink-0">check</span>
+                                <span className="text-gray-600">The S.C.A.L.E. Diagnostic™ Framework</span>
+                            </li>
+                            <li className="flex items-start gap-3 text-sm opacity-60">
+                                <span className="material-symbols-outlined text-red-400 text-lg shrink-0">cancel</span>
+                                <span className="text-gray-400">No Implementation Bonuses included</span>
+                            </li>
+                        </ul>
+
+                        <button
+                            onClick={() => onBuy('basic')}
+                            className="w-full bg-gray-50 hover:bg-gray-100 text-[#2D2D2D] font-bold text-base py-3 rounded-lg border border-gray-200 transition-all"
+                        >
+                            Get Core Framework Only
+                        </button>
                     </div>
                 </div>
+
+                {/* RISK REVERSAL: The Safety Net */}
+                <div className="bg-[#FAF8F5] rounded-xl p-6 text-center border border-[#C9A227]/10 mt-4">
+                    <div className="flex justify-center mb-3">
+                        <span className="material-symbols-outlined text-[#2D2D2D] text-3xl">verified_user</span>
+                    </div>
+                    <h4 className="font-bold text-[#2D2D2D] text-lg mb-2">30-Day 'Actually Useful' Guarantee</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                        If you don't find at least ONE profit leak you can fix immediately, simply email us and we'll refund every penny. No questions asked.
+                    </p>
+                </div>
+
             </div>
         </section>
     );

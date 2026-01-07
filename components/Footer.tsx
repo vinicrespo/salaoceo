@@ -2,13 +2,12 @@ import React from 'react';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-white py-8 px-6 border-t border-gray-100">
-            <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-center gap-6 text-xs text-gray-400">
-                <span>© 2026 Salon Profit Lab</span>
-                <div className="flex gap-4">
-                    <a className="hover:text-gray-600 transition" href="#">Terms</a>
-                    <a className="hover:text-gray-600 transition" href="#">Privacy</a>
-                </div>
+        <footer className="bg-[#FAF8F5] py-8 border-t border-gray-200 text-center">
+            <div className="max-w-4xl mx-auto px-4 flex flex-col items-center gap-4">
+                <p className="text-gray-500 text-xs font-medium">
+                    © 2026 Protocolo Salão CEO
+                </p>
+
             </div>
         </footer>
     );

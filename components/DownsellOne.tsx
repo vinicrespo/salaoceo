@@ -1,103 +1,144 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IMAGES } from '../constants';
+import { Hand, Clock, ShieldCheck, Lock } from 'lucide-react';
 
 const DownsellOne: React.FC = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleYes = () => {
-    navigate('/upsell-2');
+    // Logic for R$ 17 purchase
+    console.log('Downsell Accepted: Manual de Conversas Lucrativas (R$ 17)');
+    navigate('/upsell2'); // Proceed to next step
   };
 
   const handleNo = () => {
-    navigate('/upsell-2');
+    // Logic for decline
+    console.log('Downsell Declined');
+    navigate('/upsell2'); // Proceed to next step without product
   };
 
   return (
-    <div className="bg-[#f8f7f6] dark:bg-[#221810] font-display text-[#2D2D2D] dark:text-[#fcfaf8] antialiased overflow-x-hidden min-h-screen">
-      <div className="relative flex h-full w-full max-w-md mx-auto flex-col min-h-screen shadow-2xl bg-[#f8f7f6] dark:bg-[#221810]">
-        {/* Alert Header */}
-        <div className="sticky top-0 z-50 bg-white dark:bg-[#2a1e16] border-b border-[#ec6d13]/20 shadow-sm p-4">
-          <div className="flex items-center justify-center gap-2 text-[#ec6d13] font-bold animate-pulse">
-            <span className="material-symbols-outlined filled text-[24px]">error</span>
-            <span className="uppercase tracking-wide text-sm">WAIT — Don't Leave Empty Handed!</span>
-          </div>
-        </div>
+    <div className="font-sans antialiased bg-white min-h-screen flex flex-col">
 
-        <div className="flex-1 flex flex-col px-4 pb-32 pt-6">
-          <div className="text-center mb-6">
-            <h1 className="text-3xl font-extrabold leading-tight text-[#2D2D2D] dark:text-white mb-3">
-              Get The Video Masterclass For Just <span className="text-[#ec6d13]">$27</span>
-            </h1>
-            <p className="text-base font-normal leading-relaxed text-[#2D2D2D]/80 dark:text-gray-300">
-              <span className="font-bold text-[#ec6d13]">One-time offer:</span> Grab the complete S.C.A.L.E. video training library at 70% off before you go.
+      {/* SECTION 1: THE EMPATHETIC HOOK (Hero - Dark Background) */}
+      <section className="bg-[#1A1A1A] text-white pt-8 pb-10 px-4 text-center border-b border-[#333]">
+        <div className="max-w-md mx-auto space-y-4">
+
+          <div className="flex justify-center mb-2">
+            <Hand size={48} className="text-[#FFD700]" />
+          </div>
+
+          <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">
+            R$ 37,00 pesou no bolso agora?
+          </h1>
+
+          <p className="text-gray-400 text-lg leading-snug">
+            Eu entendo. O momento exige cautela com cada centavo. Mas eu prefiro que você tenha essa solução em mãos do que sair de mãos vazias.
+          </p>
+
+        </div>
+      </section>
+
+      {/* SECTION 2: THE "NO BRAINER" DEAL (White Background) */}
+      <section className="bg-white py-10 px-4">
+        <div className="max-w-md mx-auto">
+
+          {/* Offer Card */}
+          <div className="border-2 border-[#F2C94C] rounded-xl p-6 text-center shadow-lg relative bg-white">
+            <p className="text-xs font-bold text-[#F2C94C] uppercase tracking-widest mb-4">
+              OFERTA DE ÚLTIMA CHANCE
+            </p>
+
+            <p className="text-gray-500 text-sm font-medium mb-1">Desconto de Parceira:</p>
+
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <span className="text-gray-400 text-xl font-bold line-through decoration-gray-400">De R$ 37,00</span>
+              <span className="text-4xl md:text-5xl font-extrabold text-[#FFD700] tracking-tight">POR R$ 17,00</span>
+            </div>
+
+            <p className="text-[#27AE60] text-sm font-bold mt-4 mb-2">
+              Economize R$ 20,00 instantaneamente. É menos que um lanche.
             </p>
           </div>
 
-          <div className="bg-white dark:bg-[#2a1e16] rounded-xl shadow-soft p-4 border border-[#e7d9cf]/50 dark:border-gray-700 mb-6">
-            <div className="relative w-full aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4 shadow-inner group">
-              <div 
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url('${IMAGES.downsell1.laptop}')` }}
-              ></div>
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <div className="bg-white/90 rounded-full p-3 pl-4 shadow-lg backdrop-blur-sm">
-                  <span className="material-symbols-outlined text-[#ec6d13] text-4xl">play_arrow</span>
-                </div>
-              </div>
-              <div className="absolute top-2 right-2 bg-[#ec6d13] text-white text-xs font-bold px-2 py-1 rounded shadow-md">
-                70% OFF
-              </div>
-            </div>
+        </div>
+      </section>
 
-            <h3 className="text-lg font-bold text-[#2D2D2D] dark:text-white mb-3 px-1">What's Inside The Masterclass:</h3>
-            <div className="space-y-3">
-              {['3-Hour S.C.A.L.E. Strategy Videos', 'Audio Downloads for on-the-go listening', 'Exclusive Digital Workbook PDF', 'Lifetime Access Included'].map((item, i) => (
-                <label key={i} className="flex gap-x-3 items-start cursor-pointer group">
-                  <div className="relative flex items-center">
-                    <input defaultChecked disabled type="checkbox" className="peer h-5 w-5 rounded-full border-2 border-[#ec6d13]/30 bg-transparent text-[#ec6d13] checked:bg-[#ec6d13] checked:border-[#ec6d13] focus:ring-0 focus:ring-offset-0" />
-                  </div>
-                  <p className="text-[#2D2D2D]/90 dark:text-gray-200 text-sm font-medium leading-tight pt-0.5">{item}</p>
-                </label>
-              ))}
-            </div>
-          </div>
+      {/* SECTION 3: REASSURANCE (You still get everything) */}
+      <section className="bg-gray-50 py-10 px-4 border-t border-gray-100">
+        <div className="max-w-md mx-auto">
+          <h3 className="font-bold text-[#2D2D2D] text-lg text-center mb-6">
+            Você ainda leva o MANUAL COMPLETO:
+          </h3>
 
-          <div className="bg-[#F5E6E0] dark:bg-[#3a2e26] rounded-xl p-6 text-center mb-6 border border-[#ec6d13]/10">
-            <p className="text-[#2D2D2D]/60 dark:text-gray-400 text-sm font-medium uppercase tracking-wide mb-1">Total Value</p>
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-gray-500 dark:text-gray-500 text-xl font-bold line-through decoration-red-500/50 decoration-2">$97.00</span>
-              <span className="material-symbols-outlined text-[#ec6d13] text-xl">arrow_forward</span>
-              <span className="text-[#ec6d13] text-4xl font-extrabold tracking-tight">$27.00</span>
-            </div>
-            <p className="text-xs text-[#2D2D2D]/50 dark:text-gray-400 mt-2">Save $70.00 instantly</p>
-          </div>
-
-          <div className="flex items-start gap-3 bg-white dark:bg-white/5 p-3 rounded-lg border border-gray-100 dark:border-white/10 mb-8">
-            <div className="shrink-0 rounded-full h-10 w-10 bg-gray-200 bg-cover bg-center" style={{ backgroundImage: `url('${IMAGES.downsell1.portrait}')` }}></div>
-            <div>
-              <div className="flex text-[#C9A227] text-xs mb-1">
-                {[1,2,3,4,5].map(s => <span key={s} className="material-symbols-outlined text-[14px] filled">star</span>)}
+          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm space-y-4">
+            {[
+              "Todos os 50+ Scripts de Vendas.",
+              "Os modelos de WhatsApp 'Copia e Cola'.",
+              "O Script Anti-Calote.",
+              "Acesso Vitalício (Sem pegadinhas)."
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-sm">✓</span>
+                <p className="text-gray-700 text-base font-medium leading-tight">{item}</p>
               </div>
-              <p className="text-xs italic text-[#2D2D2D]/80 dark:text-gray-300">"The video format made it so much easier for me to train my team. Worth every penny!"</p>
-            </div>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="fixed bottom-0 w-full max-w-md bg-white dark:bg-[#221810] border-t border-gray-100 dark:border-gray-800 p-4 pb-8 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] backdrop-blur-md bg-white/90 dark:bg-[#221810]/95">
-          <button onClick={handleYes} className="w-full bg-[#ec6d13] hover:bg-[#ec6d13]/90 text-white font-bold text-lg py-4 px-6 rounded-full shadow-glow transition-all active:scale-[0.98] flex items-center justify-center gap-2 mb-4">
-            <span>YES! Add to Order — $27</span>
-            <span className="material-symbols-outlined">check_circle</span>
+      {/* SECTION 4: URGENCY & CTA */}
+      <section className="bg-white py-12 px-4 pb-20">
+        <div className="max-w-md mx-auto text-center">
+
+          <div className="flex items-center justify-center gap-2 text-[#E85D04] font-bold text-xs uppercase tracking-wide mb-6">
+            <Clock size={16} />
+            <span>Esse desconto desaparece assim que você fechar essa página.</span>
+          </div>
+
+          {/* Secure Icon */}
+          <div className="flex items-center justify-center gap-1 text-xs font-bold text-gray-400 mb-2">
+            <Lock size={12} />
+            <span>Checkout Seguro</span>
+          </div>
+
+          <button
+            onClick={handleYes}
+            className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-black font-extrabold text-lg py-4 rounded-lg shadow-[0_4px_15px_rgba(242,153,74,0.4)] hover:shadow-[0_6px_20px_rgba(242,153,74,0.6)] transform transition hover:scale-105 mb-4 leading-tight border border-[#F2C94C]"
+          >
+            SIM! QUERO PAGAR APENAS R$ 17
+            <span className="block text-xs font-medium opacity-80 mt-1 uppercase tracking-wide text-[#3E2700]">Adicionar ao meu pedido agora</span>
           </button>
-          <button onClick={handleNo} className="block w-full text-center text-sm font-medium text-gray-400 hover:text-[#2D2D2D] dark:hover:text-white underline decoration-gray-300 underline-offset-4 transition-colors">
-            No thanks, I really don't want the videos.
+
+          <button
+            onClick={handleNo}
+            className="text-xs text-gray-400 hover:text-gray-600 underline max-w-xs mx-auto block leading-relaxed"
+          >
+            Não, obrigado. Eu realmente não quero saber o que dizer para vender mais. Vou recusar a oferta de R$ 17.
           </button>
-          <div className="flex items-center justify-center gap-1.5 mt-4 opacity-60">
-            <span className="material-symbols-outlined text-[12px] text-[#2D2D2D] dark:text-gray-400">lock</span>
-            <span className="text-[10px] text-[#2D2D2D] dark:text-gray-400 font-medium uppercase tracking-wider">Secure Checkout</span>
+
+        </div>
+      </section>
+
+      {/* SECTION 5: FOOTER */}
+      <footer className="bg-[#FAF8F5] py-8 border-t border-gray-200 text-center mt-auto">
+        <div className="flex items-center justify-center gap-4 opacity-50 grayscale mb-4">
+          <div className="flex items-center gap-1 text-[10px] font-bold text-gray-500 uppercase">
+            <Lock size={12} /> SSL Secure
+          </div>
+          <div className="flex items-center gap-1 text-[10px] font-bold text-gray-500 uppercase">
+            <ShieldCheck size={12} /> Privacy Protected
           </div>
         </div>
-      </div>
+        <p className="text-gray-400 text-[10px] font-medium">
+          © 2026 Protocolo Salão CEO
+        </p>
+      </footer>
+
     </div>
   );
 };
