@@ -60,7 +60,7 @@ const Offer: React.FC<OfferProps> = ({ onBuyComplete, onBuyBasic }) => {
                         onClick={onBuyComplete}
                         className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-[#3E2700] font-bold py-3 rounded-lg shadow-[0_0_15px_rgba(242,201,76,0.5)] hover:shadow-[0_0_25px_rgba(242,201,76,0.7)] transition transform hover:scale-105"
                     >
-                        QUERO O PACOTE COMPLETO
+                        QUERO OBTER PLANO
                     </button>
                 </div>
 
@@ -108,12 +108,12 @@ const Offer: React.FC<OfferProps> = ({ onBuyComplete, onBuyBasic }) => {
                         onClick={onBuyBasic}
                         className="w-full bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold py-3 rounded-lg border border-gray-300 transition text-sm"
                     >
-                        Quero apenas o Básico sem Bônus
+                        QUERO OBTER PLANO
                     </button>
                 </div>
 
             </div>
-        </section>
+        </section >
     );
 };
 
