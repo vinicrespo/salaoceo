@@ -7,7 +7,7 @@ const DownsellTwo: React.FC = () => {
   }, []);
 
   const handleYes = () => {
-    console.log('Downsell 2 Accepted: Roteiro 90 Dias (R$ 27)');
+    console.log('Downsell 2 Accepted: Roteiro 90 Dias (R$ 37)');
     // Proceed to Thank You page
     window.location.href = '/thank-you' + window.location.search;
   };
@@ -52,11 +52,11 @@ const DownsellTwo: React.FC = () => {
             <p className="text-gray-500 text-sm mb-1">De <span className="line-through">R$ 47,00</span></p>
 
             <p className="text-gray-900 font-bold mb-4">
-              <span className="bg-[#1A1A1A] text-[#FFD700] rounded-full px-4 py-1 text-4xl font-extrabold inline-block mt-2 shadow-sm">POR R$ 27,00</span>
+              <span className="bg-[#1A1A1A] text-[#FFD700] rounded-full px-4 py-1 text-4xl font-extrabold inline-block mt-2 shadow-sm">POR R$ 37,00</span>
             </p>
 
             <p className="text-gray-500 text-xs font-medium">
-              Isso é menos de R$ 0,30 centavos por dia de planejamento.
+              Isso é menos de R$ 0,42 centavos por dia de planejamento.
             </p>
           </div>
 
@@ -99,7 +99,7 @@ const DownsellTwo: React.FC = () => {
             onClick={handleYes}
             className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-[#000000] font-extrabold text-lg py-4 rounded-lg shadow-[0_4px_15px_rgba(242,153,74,0.4)] hover:shadow-[0_6px_20px_rgba(242,153,74,0.6)] transform transition hover:scale-105 mb-4 leading-tight border border-[#F2C94C]"
           >
-            SIM! QUERO O PLANO POR R$ 27
+            SIM! QUERO O PLANO POR R$ 37
             <span className="block text-xs font-medium opacity-80 mt-1 uppercase tracking-wide text-[#000000]">Adicionar ao meu pedido agora</span>
           </button>
 

@@ -53,12 +53,12 @@ const DownsellOne: React.FC = () => {
             <p className="text-gray-500 text-sm font-medium mb-1">Desconto de Parceira:</p>
 
             <div className="flex items-center justify-center gap-3 mb-2">
-              <span className="text-gray-400 text-xl font-bold line-through decoration-gray-400">De R$ 37,00</span>
+              <span className="text-gray-400 text-xl font-bold line-through decoration-gray-400">De R$ 27,00</span>
               <span className="text-4xl md:text-5xl font-extrabold text-[#FFD700] tracking-tight">POR R$ 17,00</span>
             </div>
 
             <p className="text-[#27AE60] text-sm font-bold mt-4 mb-2">
-              Economize R$ 20,00 instantaneamente. É menos que um lanche.
+              Economize R$ 10,00 instantaneamente. É menos que um lanche.
             </p>
           </div>
 

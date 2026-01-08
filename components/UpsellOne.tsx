@@ -11,8 +11,8 @@ const UpsellOne: React.FC = () => {
   }, []);
 
   const handleYes = () => {
-    // Add logic to process the R$ 37 add-on
-    console.log('Upsell Accepted: Manual de Conversas Lucrativas (R$ 37)');
+    // Add logic to process the R$ 27 add-on
+    console.log('Upsell Accepted: Manual de Conversas Lucrativas (R$ 27)');
     window.location.href = '/upsell2' + window.location.search; // Or next step in funnel
   };
 
@@ -117,7 +117,7 @@ const UpsellOne: React.FC = () => {
 
             <p className="text-gray-500 text-sm mb-1">Valor Normal: <span className="line-through">R$ 97,00</span></p>
             <p className="text-gray-900 font-bold mb-6">
-              Adicionar ao meu pedido por apenas <span className="text-5xl font-extrabold text-[#FFD700] block mt-2 drop-shadow-sm">R$ 37,00</span>
+              Adicionar ao meu pedido por apenas <span className="text-5xl font-extrabold text-[#FFD700] block mt-2 drop-shadow-sm">R$ 27,00</span>
             </p>
 
             <button
