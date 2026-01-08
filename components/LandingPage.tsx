@@ -39,7 +39,10 @@ const LandingPage: React.FC = () => {
       return;
     }
 
-    // if (option === 'complete_27') window.location.href = appendParams('CHECKOUT_URL_27_OFFER');
+    if (option === 'complete_27') {
+      window.location.href = appendParams('https://pay.zouti.com.br/checkout?poi=prod_offer_epslo86kaif3ive800n08m');
+      return;
+    }
 
     alert(`Redirecionando para checkout: ${option} com params: ${searchParams}`);
   };
