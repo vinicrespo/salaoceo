@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Calendar, Check, X, ShieldCheck, Lock } from 'lucide-react';
 
 const UpsellTwo: React.FC = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -12,13 +9,13 @@ const UpsellTwo: React.FC = () => {
   const handleYes = () => {
     console.log('Upsell 2 Accepted: Roteiro 90 Dias (R$ 47)');
     // Proceed to Thank You page or next step
-    navigate('/thank-you');
+    window.location.href = '/thank-you' + window.location.search;
   };
 
   const handleNo = () => {
     console.log('Upsell 2 Declined');
     // Proceed to Downsell 2 (if exists) or Thank You
-    navigate('/downsell2');
+    window.location.href = '/downsell2' + window.location.search;
   };
 
   return (

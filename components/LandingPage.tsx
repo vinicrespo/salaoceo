@@ -21,13 +21,15 @@ const LandingPage: React.FC = () => {
 
   const handleBuy = (option: 'complete_37' | 'complete_27' | 'basic_10') => {
     console.log(`User selected purchase option: ${option}`);
-    // Here you would integrate with your checkout system URL (e.g., Hotmart, Kiwify)
-    // Example:
-    // if (option === 'complete_37') window.location.href = 'CHECKOUT_URL_37';
-    // if (option === 'complete_27') window.location.href = 'CHECKOUT_URL_27_OFFER';
-    // if (option === 'basic_10') window.location.href = 'CHECKOUT_URL_10_BASIC';
+    const searchParams = window.location.search;
 
-    alert(`Redirecionando para checkout: ${option}`);
+    // Here you would integrate with your checkout system URL (e.g., Hotmart, Kiwify)
+    // Example with persisted params:
+    // if (option === 'complete_37') window.location.href = 'CHECKOUT_URL_37' + searchParams;
+    // if (option === 'complete_27') window.location.href = 'CHECKOUT_URL_27_OFFER' + searchParams;
+    // if (option === 'basic_10') window.location.href = 'CHECKOUT_URL_10_BASIC' + searchParams;
+
+    alert(`Redirecionando para checkout: ${option} com params: ${searchParams}`);
   };
 
   return (

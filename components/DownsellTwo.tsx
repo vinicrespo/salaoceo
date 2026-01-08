@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Hand, Clock, ShieldCheck, Lock, Check } from 'lucide-react';
 
 const DownsellTwo: React.FC = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -12,13 +9,13 @@ const DownsellTwo: React.FC = () => {
   const handleYes = () => {
     console.log('Downsell 2 Accepted: Roteiro 90 Dias (R$ 27)');
     // Proceed to Thank You page
-    navigate('/thank-you');
+    window.location.href = '/thank-you' + window.location.search;
   };
 
   const handleNo = () => {
     console.log('Downsell 2 Declined');
     // Proceed to Thank You page
-    navigate('/thank-you');
+    window.location.href = '/thank-you' + window.location.search;
   };
 
   return (

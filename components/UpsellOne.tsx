@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { MessageSquare, X, Check, Lock, ShieldCheck } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 const UpsellOne: React.FC = () => {
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -14,12 +13,12 @@ const UpsellOne: React.FC = () => {
   const handleYes = () => {
     // Add logic to process the R$ 37 add-on
     console.log('Upsell Accepted: Manual de Conversas Lucrativas (R$ 37)');
-    navigate('/upsell2'); // Or next step in funnel
+    window.location.href = '/upsell2' + window.location.search; // Or next step in funnel
   };
 
   const handleNo = () => {
     console.log('Upsell Declined');
-    navigate('/downsell1'); // Next step if declined (Downsell or Next Upsell depending on funnel)
+    window.location.href = '/downsell1' + window.location.search; // Next step if declined (Downsell or Next Upsell depending on funnel)
   };
 
   return (

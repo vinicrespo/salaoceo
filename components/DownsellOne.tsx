@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Hand, Clock, ShieldCheck, Lock } from 'lucide-react';
 
 const DownsellOne: React.FC = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -12,13 +9,13 @@ const DownsellOne: React.FC = () => {
   const handleYes = () => {
     // Logic for R$ 17 purchase
     console.log('Downsell Accepted: Manual de Conversas Lucrativas (R$ 17)');
-    navigate('/upsell2'); // Proceed to next step
+    window.location.href = '/upsell2' + window.location.search; // Proceed to next step
   };
 
   const handleNo = () => {
     // Logic for decline
     console.log('Downsell Declined');
-    navigate('/upsell2'); // Proceed to next step without product
+    window.location.href = '/upsell2' + window.location.search; // Proceed to next step without product
   };
 
   return (
