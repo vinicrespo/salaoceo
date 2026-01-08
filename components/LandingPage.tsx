@@ -22,12 +22,20 @@ const LandingPage: React.FC = () => {
   const handleBuy = (option: 'complete_37' | 'complete_27' | 'basic_10') => {
     console.log(`User selected purchase option: ${option}`);
     const searchParams = window.location.search;
+    // Helper to append params handling existing '?'
+    const appendParams = (url: string) => {
+      if (!searchParams) return url;
+      const separator = url.includes('?') ? '&' : '?';
+      return url + separator + searchParams.substring(1);
+    };
 
-    // Here you would integrate with your checkout system URL (e.g., Hotmart, Kiwify)
-    // Example with persisted params:
-    // if (option === 'complete_37') window.location.href = 'CHECKOUT_URL_37' + searchParams;
-    // if (option === 'complete_27') window.location.href = 'CHECKOUT_URL_27_OFFER' + searchParams;
-    // if (option === 'basic_10') window.location.href = 'CHECKOUT_URL_10_BASIC' + searchParams;
+    if (option === 'basic_10') {
+      window.location.href = appendParams('https://pay.zouti.com.br/checkout?poi=prod_offer_pc14qb12aho9ch1l67yufr');
+      return;
+    }
+
+    // if (option === 'complete_37') window.location.href = appendParams('CHECKOUT_URL_37');
+    // if (option === 'complete_27') window.location.href = appendParams('CHECKOUT_URL_27_OFFER');
 
     alert(`Redirecionando para checkout: ${option} com params: ${searchParams}`);
   };
