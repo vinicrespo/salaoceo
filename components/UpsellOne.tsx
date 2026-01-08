@@ -8,18 +8,26 @@ const UpsellOne: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Set global variables for Zouti
+    (window as any).acceptUpsellAction = 'ZOUTI';
+    (window as any).declineUpsellAction = 'ZOUTI';
+    (window as any).acceptUpsellExternalUrl = '';
+    (window as any).declineUpsellExternalUrl = '';
+    (window as any).selectedOfferProductId = 'prod_atvvzism453jeymwbnhc3g';
+
+    // Append script
+    const script = document.createElement('script');
+    script.src = "https://zouti-prod-core-media-public.s3.us-east-1.amazonaws.com/scripts/zouti_pay_min.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
   }, []);
-
-  const handleYes = () => {
-    // Add logic to process the R$ 27 add-on
-    console.log('Upsell Accepted: Manual de Conversas Lucrativas (R$ 27)');
-    window.location.href = '/upsell2' + window.location.search; // Or next step in funnel
-  };
-
-  const handleNo = () => {
-    console.log('Upsell Declined');
-    window.location.href = '/downsell1' + window.location.search; // Next step if declined (Downsell or Next Upsell depending on funnel)
-  };
 
   return (
     <div className="font-sans antialiased bg-white min-h-screen flex flex-col">
@@ -120,19 +128,41 @@ const UpsellOne: React.FC = () => {
               Adicionar ao meu pedido por apenas <span className="text-5xl font-extrabold text-[#FFD700] block mt-2 drop-shadow-sm">R$ 27,00</span>
             </p>
 
-            <button
-              onClick={handleYes}
-              className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-[#3E2700] font-extrabold text-lg py-4 rounded-lg shadow-[0_0_20px_rgba(242,201,76,0.6)] hover:shadow-[0_0_30px_rgba(242,201,76,0.8)] transform transition hover:scale-105 animate-pulse mb-4 leading-tight"
-            >
-              SIM! ADICIONAR O MANUAL DE SCRIPTS AGORA
-            </button>
-
-            <button
-              onClick={handleNo}
-              className="text-xs text-gray-400 hover:text-gray-600 underline"
-            >
-              Não, obrigado. Eu prefiro criar meus próprios scripts do zero e arriscar perder vendas.
-            </button>
+            <div style={{ textAlign: 'center' }}>
+              <button
+                id="zouti-upsell-accept-button"
+                style={{
+                  backgroundColor: '#10B978',
+                  padding: '12px 16px',
+                  cursor: 'pointer',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  borderRadius: '4px',
+                  border: '1px solid #10B978',
+                  fontSize: '20px',
+                  display: 'inline-block',
+                }}
+              >
+                Sim, aceito essa oferta
+              </button>
+              <button
+                id="zouti-upsell-cancel-button"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: '0',
+                  margin: '10px auto 0 auto',
+                  textDecoration: 'underline',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                  display: 'block',
+                  fontFamily: 'sans-serif',
+                  color: '#616161',
+                }}
+              >
+                Não, quero recusar essa oferta
+              </button>
+            </div>
 
             <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-400 opacity-80">
               <ShieldCheck size={14} />
