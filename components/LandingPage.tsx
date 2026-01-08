@@ -34,7 +34,11 @@ const LandingPage: React.FC = () => {
       return;
     }
 
-    // if (option === 'complete_37') window.location.href = appendParams('CHECKOUT_URL_37');
+    if (option === 'complete_37') {
+      window.location.href = appendParams('https://pay.zouti.com.br/checkout?product_offer_id=prod_offer_b9uiionlgx7d4zkxx3xxar');
+      return;
+    }
+
     // if (option === 'complete_27') window.location.href = appendParams('CHECKOUT_URL_27_OFFER');
 
     alert(`Redirecionando para checkout: ${option} com params: ${searchParams}`);
