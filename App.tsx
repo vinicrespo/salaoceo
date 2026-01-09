@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 
 // Lazy load secondary pages to optimize initial bundle size
@@ -11,7 +11,7 @@ const ThankYou = React.lazy(() => import('./components/ThankYou'));
 
 // ScrollToTop component to ensure pages start at the top
 const ScrollToTopWrapper = () => {
-  const { pathname } = React.useMemo(() => ({ pathname: window.location.hash }), []);
+  const { pathname } = useLocation();
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,7 +29,7 @@ const Loading = () => (
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollToTopWrapper />
       <Suspense fallback={<Loading />}>
         <Routes>
@@ -41,7 +41,7 @@ const App: React.FC = () => {
           <Route path="/thanks" element={<ThankYou />} />
         </Routes>
       </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

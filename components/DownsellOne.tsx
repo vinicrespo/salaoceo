@@ -4,19 +4,24 @@ import { Hand, Clock, ShieldCheck, Lock } from 'lucide-react';
 const DownsellOne: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Set Zouti variables
+    (window as any).acceptUpsellAction = 'ZOUTI';
+    (window as any).declineUpsellAction = 'ZOUTI';
+    (window as any).acceptUpsellExternalUrl = '';
+    (window as any).declineUpsellExternalUrl = '';
+    (window as any).selectedOfferProductId = 'prod_atvvzism453jeymwbnhc3g';
+
+    // Load Zouti script dynamically
+    const script = document.createElement('script');
+    script.src = 'https://zouti-prod-core-media-public.s3.us-east-1.amazonaws.com/scripts/zouti_pay_min.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
-
-  const handleYes = () => {
-    // Logic for R$ 17 purchase
-    console.log('Downsell Accepted: Manual de Conversas Lucrativas (R$ 17)');
-    window.location.href = '/upsell2' + window.location.search; // Proceed to next step
-  };
-
-  const handleNo = () => {
-    // Logic for decline
-    console.log('Downsell Declined');
-    window.location.href = '/upsell2' + window.location.search; // Proceed to next step without product
-  };
 
   return (
     <div className="font-sans antialiased bg-white min-h-screen flex flex-col">
@@ -103,21 +108,42 @@ const DownsellOne: React.FC = () => {
             <span>Checkout Seguro</span>
           </div>
 
-          <button
-            onClick={handleYes}
-            className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-black font-extrabold text-lg py-4 rounded-lg shadow-[0_4px_15px_rgba(242,153,74,0.4)] hover:shadow-[0_6px_20px_rgba(242,153,74,0.6)] transform transition hover:scale-105 mb-4 leading-tight border border-[#F2C94C]"
-          >
-            SIM! QUERO PAGAR APENAS R$ 17
-            <span className="block text-xs font-medium opacity-80 mt-1 uppercase tracking-wide text-[#3E2700]">Adicionar ao meu pedido agora</span>
-          </button>
-
-          <button
-            onClick={handleNo}
-            className="text-xs text-gray-400 hover:text-gray-600 underline max-w-xs mx-auto block leading-relaxed"
-          >
-            Não, obrigado. Eu realmente não quero saber o que dizer para vender mais. Vou recusar a oferta de R$ 17.
-          </button>
-
+          {/* ZOUTI WIDGET */}
+          <div style={{ textAlign: 'center' }}>
+            <button
+              id="zouti-upsell-accept-button"
+              style={{
+                backgroundColor: '#10B978',
+                padding: '12px 16px',
+                cursor: 'pointer',
+                color: '#FFFFFF',
+                fontWeight: 600,
+                borderRadius: '4px',
+                border: '1px solid #10B978',
+                fontSize: '20px',
+                display: 'inline-block',
+              }}
+            >
+              Sim, aceito essa oferta
+            </button>
+            <button
+              id="zouti-upsell-cancel-button"
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: '0',
+                margin: '10px auto 0 auto',
+                textDecoration: 'underline',
+                fontSize: '16px',
+                cursor: 'pointer',
+                display: 'block',
+                fontFamily: 'sans-serif',
+                color: '#616161',
+              }}
+            >
+              Não, quero recusar essa oferta
+            </button>
+          </div>
         </div>
       </section>
 
