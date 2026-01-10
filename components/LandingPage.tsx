@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Hero from './vsl/Hero';
-import SocialProof from './vsl/SocialProof';
-import Mechanism from './vsl/Mechanism';
 import Offer from './vsl/Offer';
-import Guarantee from './vsl/Guarantee';
-import FAQ from './vsl/FAQ';
-import UpsellModal from './vsl/UpsellModal';
-import Footer from './Footer';
+
+// Lazy load non-critical sections
+const SocialProof = React.lazy(() => import('./vsl/SocialProof'));
+const Mechanism = React.lazy(() => import('./vsl/Mechanism'));
+const Guarantee = React.lazy(() => import('./vsl/Guarantee'));
+const FAQ = React.lazy(() => import('./vsl/FAQ'));
+const UpsellModal = React.lazy(() => import('./vsl/UpsellModal'));
+const Footer = React.lazy(() => import('./Footer'));
 
 const LandingPage: React.FC = () => {
   const [showUpsellModal, setShowUpsellModal] = useState(false);
@@ -51,33 +53,36 @@ const LandingPage: React.FC = () => {
     <div className="font-sans antialiased text-[#2D2D2D] bg-white min-h-screen flex flex-col">
       <Hero onCtaClick={scrollToPricing} />
 
-      <SocialProof />
-
-      <Mechanism />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#C9A227]"></div></div>}>
+        <SocialProof />
+        <Mechanism />
+      </Suspense>
 
       <Offer
         onBuyComplete={() => handleBuy('complete_37')}
         onBuyBasic={() => setShowUpsellModal(true)}
       />
 
-      <Guarantee />
+      <Suspense fallback={<div className="h-96"></div>}>
+        <Guarantee />
+        <FAQ />
+      </Suspense>
 
-      <FAQ />
-
-      <Footer />
-
-      <UpsellModal
-        isOpen={showUpsellModal}
-        onClose={() => setShowUpsellModal(false)}
-        onAccept={() => {
-          setShowUpsellModal(false);
-          handleBuy('complete_27');
-        }}
-        onDecline={() => {
-          setShowUpsellModal(false);
-          handleBuy('basic_10');
-        }}
-      />
+      <Suspense fallback={null}>
+        <Footer />
+        <UpsellModal
+          isOpen={showUpsellModal}
+          onClose={() => setShowUpsellModal(false)}
+          onAccept={() => {
+            setShowUpsellModal(false);
+            handleBuy('complete_27');
+          }}
+          onDecline={() => {
+            setShowUpsellModal(false);
+            handleBuy('basic_10');
+          }}
+        />
+      </Suspense>
     </div>
   );
 };

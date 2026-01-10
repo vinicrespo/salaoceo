@@ -18,7 +18,14 @@ const SocialProof: React.FC = () => {
                             "O Protocolo me mostrou que eu perdia R$ 1.800/mês só com furos na agenda. Arrumei a casa na primeira semana."
                         </p>
                         <div className="flex items-center gap-3">
-                            <img src="/raquel.png" alt="Raquel M." className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md" />
+                            <img
+                                src="/raquel.png"
+                                alt="Raquel M."
+                                width="48"
+                                height="48"
+                                loading="lazy"
+                                className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
+                            />
                             <div>
                                 <p className="font-bold text-gray-900 text-sm">Raquel M.</p>
                                 <p className="text-xs text-gray-500">Proprietária (São Paulo, SP)</p>
@@ -35,7 +42,14 @@ const SocialProof: React.FC = () => {
                             "Eu trabalhava 12h por dia. Agora minha equipe sabe o que fazer e eu finalmente tirei férias de verdade."
                         </p>
                         <div className="flex items-center gap-3">
-                            <img src="/maria.png" alt="Maria S." className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md" />
+                            <img
+                                src="/maria.png"
+                                alt="Maria S."
+                                width="48"
+                                height="48"
+                                loading="lazy"
+                                className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
+                            />
                             <div>
                                 <p className="font-bold text-gray-900 text-sm">Maria S.</p>
                                 <p className="text-xs text-gray-500">Proprietária (Belo Horizonte, MG)</p>
