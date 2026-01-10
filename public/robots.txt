@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Bloquear páginas de admin/sistema
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://salaoceo.vercel.app/sitemap.xml

@@ -5,16 +5,8 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
-    React.useEffect(() => {
-        const scriptId = 'vturb-player-script';
-        if (!document.getElementById(scriptId)) {
-            const s = document.createElement("script");
-            s.id = scriptId;
-            s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/695edd7423fc590cf35d19c0/v4/player.js";
-            s.async = true;
-            document.head.appendChild(s);
-        }
-    }, []);
+    // Script injected via index.html deferred loader
+    // to improve PageSpeed (removed local injection)
 
     return (
         <section className="relative w-full bg-[#111111] flex flex-col items-center pt-8 pb-12 px-4 md:px-0 border-b border-[#222]">
