@@ -4,19 +4,26 @@ import { Calendar, Check, X, ShieldCheck, Lock } from 'lucide-react';
 const UpsellTwo: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Set global variables for Zouti
+    (window as any).acceptUpsellAction = 'EXTERNAL';
+    (window as any).declineUpsellAction = 'EXTERNAL';
+    (window as any).acceptUpsellExternalUrl = 'salaoceo.vercel.app/thanks';
+    (window as any).declineUpsellExternalUrl = 'salaoceo.vercel.app/downsell2';
+    (window as any).selectedOfferProductId = 'prod_atvvzism453jeymwbnhc3g';
+
+    // Append script
+    const script = document.createElement('script');
+    script.src = "https://zouti-prod-core-media-public.s3.us-east-1.amazonaws.com/scripts/zouti_pay_min.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
   }, []);
-
-  const handleYes = () => {
-    console.log('Upsell 2 Accepted: Roteiro 90 Dias (R$ 47)');
-    // Proceed to Thank You page or next step
-    window.location.href = '/thank-you' + window.location.search;
-  };
-
-  const handleNo = () => {
-    console.log('Upsell 2 Declined');
-    // Proceed to Downsell 2 (if exists) or Thank You
-    window.location.href = '/downsell2' + window.location.search;
-  };
 
   return (
     <div className="font-sans antialiased bg-white min-h-screen flex flex-col">
@@ -130,19 +137,41 @@ const UpsellTwo: React.FC = () => {
               Adicionar ao pedido por <span className="bg-[#1A1A1A] text-[#FFD700] rounded-full px-4 py-1 text-4xl font-extrabold inline-block mt-2 shadow-sm">R$ 47,00</span>
             </p>
 
-            <button
-              onClick={handleYes}
-              className="w-full bg-gradient-to-r from-[#F2994A] to-[#F2C94C] text-black font-extrabold text-lg py-4 rounded-lg shadow-[0_4px_15px_rgba(242,153,74,0.4)] hover:shadow-[0_6px_20px_rgba(242,153,74,0.6)] transform transition hover:scale-105 mb-4 leading-tight border border-[#F2C94C]"
-            >
-              SIM! QUERO O ROTEIRO DE 90 DIAS
-            </button>
-
-            <button
-              onClick={handleNo}
-              className="text-xs text-gray-400 hover:text-gray-600 underline max-w-xs mx-auto block leading-relaxed"
-            >
-              Não, obrigado. Eu confio na minha própria disciplina para manter o foco sozinha sem um plano.
-            </button>
+            <div style={{ textAlign: 'center' }}>
+              <button
+                id="zouti-upsell-accept-button"
+                style={{
+                  backgroundColor: '#10B978',
+                  padding: '12px 16px',
+                  cursor: 'pointer',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  borderRadius: '4px',
+                  border: '1px solid  #10B978',
+                  fontSize: '20px',
+                  display: 'inline-block',
+                }}
+              >
+                Sim, aceito essa oferta
+              </button>
+              <button
+                id="zouti-upsell-cancel-button"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: '0',
+                  margin: '10px auto 0 auto',
+                  textDecoration: 'underline',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                  display: 'block',
+                  fontFamily: 'sans-serif',
+                  color: '#616161',
+                }}
+              >
+                Não, quero recusar essa oferta
+              </button>
+            </div>
 
             <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-400 opacity-80">
               <ShieldCheck size={14} />
