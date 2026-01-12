@@ -7,6 +7,26 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
     // Script injected via index.html deferred loader
     // to improve PageSpeed (removed local injection)
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            // Check if scripts are already present to avoid duplicates
+            if (!document.querySelector('script[src*="695edd7423fc590cf35d19c0/v4/player.js"]')) {
+                const s1 = document.createElement('script');
+                s1.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/695edd7423fc590cf35d19c0/v4/player.js";
+                s1.async = true;
+                document.head.appendChild(s1);
+            }
+
+            if (!document.querySelector('script[src*="smartplayer-wc/v4/smartplayer.js"]')) {
+                const s2 = document.createElement('script');
+                s2.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js";
+                s2.async = true;
+                document.head.appendChild(s2);
+            }
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <section className="relative w-full bg-[#111111] flex flex-col items-center pt-8 pb-12 px-4 md:px-0 border-b border-[#222]">
